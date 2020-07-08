@@ -1,0 +1,17 @@
+# 生产环境yml配置文件
+server:
+  port: 8001 # 端口
+
+spring:
+  datasource: # 配置数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/allen?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: lyz950725
+  jackson: # jackson序列化配置
+    property-naming-strategy: SNAKE_CASE # 返回到前端的字段均用下划线格式
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true # 返回的Date类型均用时间戳格式
+
+mybatis-plus: # mybatis-plus生产环境下配置
+  mapper-locations: classpath*:/mapper/**Mapper.xml # mapper文件在resources目录下的映射位置
