@@ -1,20 +1,25 @@
 package com.luyuze.allen.api.v1;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.luyuze.allen.dto.UserRegisterDTO;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/test")
+@RequestMapping("/test")
+@Validated
 public class TestController {
 
-    @GetMapping("")
-    public Object test() {
+    @PostMapping("/list")
+    public Object test(
+            @RequestBody @Validated UserRegisterDTO userRegisterDTO
+            ) {
         Map<String, String> map = new HashMap<>();
-        map.put("1", "hello111");
+        map.put("1", "hello");
         return map;
     }
+
 }

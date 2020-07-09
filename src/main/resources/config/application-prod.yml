@@ -15,3 +15,7 @@ spring:
 
 mybatis-plus: # mybatis-plus生产环境下配置
   mapper-locations: classpath*:/mapper/**Mapper.xml # mapper文件在resources目录下的映射位置
+  global-config:
+    db-config:
+      logic-not-delete-value: 0 # 未删除时标识字段为0
+      logic-delete-value: 1 # 删除时删除标识字段改为1

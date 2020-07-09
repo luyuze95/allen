@@ -2,3 +2,6 @@
 spring:
   profiles:
     active: dev
+
+allen: # 自动路由前缀包路径配置
+  api-package: com.luyuze.allen.api
