@@ -3,6 +3,7 @@ package com.luyuze.allen.exception;
 import com.luyuze.allen.config.ExceptionCodeConfiguration;
 
 import com.luyuze.allen.exception.http.HttpException;
+import org.apache.shiro.ShiroException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -97,6 +98,23 @@ public class GlobalExceptionAdvice {
         String message = e.getMessage();
 
         return new UnifyResponse(10001, message, method + " " + requestUrl);
+    }
+
+    /**
+     * shiro异常捕获处理
+     * @param request
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(ShiroException.class)
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public UnifyResponse handleShiroException(HttpServletRequest request,
+                                              ShiroException e) {
+        String requestUrl = request.getRequestURI();
+        String method = request.getMethod();
+        String message = e.getMessage();
+        return new UnifyResponse(10004, message, method + " " + requestUrl);
     }
 
     private String formatAllErrorMessages(List<ObjectError> errors) {

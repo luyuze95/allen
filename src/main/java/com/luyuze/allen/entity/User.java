@@ -15,7 +15,6 @@ public class User {
     private String username;
 
     @JsonIgnore
-    @TableField(select = false)
     private String password;
 
     private String phone;

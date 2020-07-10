@@ -1,5 +1,7 @@
 package com.luyuze.allen.service;
 
+import com.luyuze.allen.entity.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -17,4 +19,11 @@ public interface UserService {
      * @return
      */
     List<String> getAuthorities(Long userId);
+
+    /**
+     * 根据username获取user对象
+     * @param username
+     * @return
+     */
+    User getUser(String username);
 }

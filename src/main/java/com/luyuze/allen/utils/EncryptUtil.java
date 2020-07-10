@@ -5,6 +5,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+/**
+ * 用户密码加盐加密工具类
+ * EncryptUtil.generatePasswordHash 根据password生成hash值
+ * EncryptUtil.checkPasswordHash 判断password和hash是否匹配
+ */
 public class EncryptUtil {
     /**
      * md5和sha-1混合加密

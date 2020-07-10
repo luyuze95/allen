@@ -7,6 +7,11 @@ import com.github.dozermapper.core.Mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 查询出来的分页Page对象使用的VO类，支持自定义单体VO类
+ * @param <T>
+ * @param <K>
+ */
 public class PagingDozer<T, K> extends Paging {
 
     @SuppressWarnings("unchecked")

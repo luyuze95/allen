@@ -7,6 +7,10 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * 查询出来的分页Page对象使用的VO类
+ * @param <T>
+ */
 @Getter
 @Setter
 @NoArgsConstructor

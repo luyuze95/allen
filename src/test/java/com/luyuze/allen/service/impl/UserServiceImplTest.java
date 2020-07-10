@@ -1,5 +1,6 @@
 package com.luyuze.allen.service.impl;
 
+import com.luyuze.allen.entity.User;
 import com.luyuze.allen.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,14 @@ class UserServiceImplTest {
     void getAuthoritiesByUserIdTest() {
         List<String> authorities = userService.getAuthorities(3L);
         System.out.println(authorities);
+    }
+
+    /**
+     * 根据username查询一个user测试
+     */
+    @Test
+    void selectOneUserTest() {
+        User user = userService.getUser("zhangsa");
+        System.out.println(user);
     }
 }

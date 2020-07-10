@@ -2,6 +2,9 @@ package com.luyuze.allen.exception;
 
 import lombok.Data;
 
+/**
+ * 全局统一返回格式
+ */
 @Data
 public class UnifyResponse {
 

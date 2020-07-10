@@ -1,14 +1,8 @@
 package com.luyuze.allen.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.luyuze.allen.entity.Authority;
-import com.luyuze.allen.entity.Role;
-import com.luyuze.allen.entity.RoleAuthority;
-import com.luyuze.allen.entity.UserRole;
-import com.luyuze.allen.mapper.AuthorityMapper;
-import com.luyuze.allen.mapper.RoleAuthorityMapper;
-import com.luyuze.allen.mapper.RoleMapper;
-import com.luyuze.allen.mapper.UserRoleMapper;
+import com.luyuze.allen.entity.*;
+import com.luyuze.allen.mapper.*;
 import com.luyuze.allen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +13,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Autowired
     private UserRoleMapper userRoleMapper;
@@ -65,5 +62,18 @@ public class UserServiceImpl implements UserService {
         return authorityMapper.selectList(
                 new QueryWrapper<Authority>().in("id", authorityIds)
         ).stream().map(Authority::getAuthority).collect(Collectors.toList());
+    }
+
+    /**
+     * 根据username获取user对象
+     *
+     * @param username
+     * @return
+     */
+    @Override
+    public User getUser(String username) {
+        return userMapper.selectOne(
+                new QueryWrapper<User>().eq("username", username)
+        );
     }
 }

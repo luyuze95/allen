@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luyuze.allen.mapper.UserMapper">
+
+    <resultMap id="UserListWithAddress" type="com.luyuze.allen.vo.UserWithAddressVO">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="phone" property="phone" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <collection property="addressList" ofType="com.luyuze.allen.vo.AddressVO">
+            <id column="addressId" property="id" />
+            <result column="address" property="address" />
+            <result column="user_id" property="userId" />
+            <result column="address_create_time" property="createTime" />
+            <result column="address_update_time" property="updateTime" />
+        </collection>
+    </resultMap>
+
+    <select id="getUserListWithAddress" resultMap="UserListWithAddress">
+        select
+            u.id as id,
+            u.username as username,
+            u.phone as phone,
+            u.create_time as create_time,
+            u.update_time as update_time,
+            a.id as addressId,
+            a.address as address,
+            a.user_id as user_id,
+            a.create_time as address_create_time,
+            a.update_time as address_update_time
+        from
+            user u
+        left join
+            address a
+        on
+            u.id = a.user_id
+        where
+            u.is_delete = 0
+        and
+            (
+            a.is_delete = 0
+            or
+            a.is_delete is null
+            )
+        order by
+            u.create_time desc
+    </select>
+</mapper>

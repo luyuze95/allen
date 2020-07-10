@@ -2,6 +2,7 @@ package com.luyuze.allen.mapper;
 
 import com.luyuze.allen.entity.User;
 import com.luyuze.allen.utils.EncryptUtil;
+import com.luyuze.allen.vo.UserWithAddressVO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -52,5 +53,11 @@ class UserMapperTest {
     @Test
     void deleteUserTest() {
         userMapper.deleteById(1);
+    }
+
+    @Test
+    void getUserListWithAddressTest() {
+        List<UserWithAddressVO> users = userMapper.getUserListWithAddress();
+        users.forEach(System.out::println);
     }
 }
