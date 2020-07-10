@@ -2,6 +2,7 @@ package com.luyuze.allen.api.v1;
 
 import com.luyuze.allen.dto.UserRegisterDTO;
 import com.luyuze.allen.utils.JWTUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -15,12 +16,16 @@ import java.util.Map;
 @RestController
 @RequestMapping("test")
 @Validated
+@Slf4j
 public class TestController {
 
     @PostMapping("/list")
     public Object test(
             @RequestBody @Validated UserRegisterDTO userRegisterDTO
             ) {
+        log.error("xxxx");
+        log.warn("yyyy");
+        log.debug("zzzzz");
         Map<String, String> map = new HashMap<>();
         map.put("1", "hello");
         return map;

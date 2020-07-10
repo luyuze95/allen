@@ -5,3 +5,6 @@ spring:
 
 allen: # 自动路由前缀包路径配置
   api-package: com.luyuze.allen.api
+
+logging:
+  config: classpath:logback-spring.xml
